@@ -6,21 +6,24 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 console.log(__dirname);
 // Use JSON file for storage
-const file = join(__dirname, "db.json");
+const file = join(__dirname, "/data/db.json");
 const adapter = new JSONFile(file);
 const db = new Low(adapter);
 
 const defaultData = {
   cities: [
     {
+      id: 1,
       name: "Hamburg",
       inhabitants: 1800000
     },
     {
+      id: 2,
       name: "Köln",
       inhabitants: 1086000
     },
     {
+      id: 3,
       name: "Berlin",
       inhabitants: 4000000
     }
