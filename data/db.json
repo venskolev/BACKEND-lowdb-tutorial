@@ -13,7 +13,12 @@
     {
       "id": 3,
       "name": "Berlin",
-      "inhabitants": 4000000
+      "inhabitants": 4050000
+    },
+    {
+      "id": 4,
+      "name": "Bremen",
+      "inhabitants": 4050000
     }
   ]
 }

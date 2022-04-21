@@ -54,18 +54,18 @@ app.get("/cities/:name", async (req, res) => {
 
 app.patch("/cities/:id", async (req, res) => {
   await db.read();
-  const updateDate = req.body;
-  // console.log(req.body);
-  // console.log(req.params.id);
+  const updateData = req.body;
   const cityIndex = db.data.cities.findIndex(
     (city) => city.id === parseInt(req.params.id)
   );
   console.log(cityIndex);
-  db.data.cities[cityIndex] = { ...db.data.cities[cityIndex], ...updateDate };
-  // db.data.cities.push({ ...city, ...updateDate });
-  // city = { ...city, ...updateDate };
-  await db.write();
-  res.send(db.data.cities[cityIndex]);
+  if (cityIndex > -1) {
+    db.data.cities[cityIndex] = { ...db.data.cities[cityIndex], ...updateData };
+    await db.write();
+    res.send(db.data.cities[cityIndex]);
+  } else {
+    res.status(500).send("Error: no city to update");
+  }
 });
 
 app.listen(3000, function () {
